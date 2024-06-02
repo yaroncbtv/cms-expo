@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "yarons",
+  "info": {
+    "singularName": "yaron",
+    "pluralName": "yarons",
+    "displayName": "yaron"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "yaraon": {
+      "type": "string",
+      "default": "asdfasdf"
+    }
+  }
+}
