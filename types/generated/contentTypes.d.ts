@@ -788,12 +788,49 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiLoginLogin extends Schema.SingleType {
+  collectionName: 'logins';
+  info: {
+    singularName: 'login';
+    pluralName: 'logins';
+    displayName: 'Login';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    inputPassword: Attribute.String;
+    inputEmail: Attribute.String;
+    btn: Attribute.String;
+    link: Attribute.String;
+    loading: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::login.login',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::login.login',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSignupSignup extends Schema.SingleType {
   collectionName: 'signups';
   info: {
     singularName: 'signup';
     pluralName: 'signups';
     displayName: 'Signup';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -802,6 +839,9 @@ export interface ApiSignupSignup extends Schema.SingleType {
     title: Attribute.String;
     inputEmail: Attribute.String;
     inputPassword: Attribute.String;
+    btn: Attribute.String;
+    link: Attribute.String;
+    loading: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -890,6 +930,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::login.login': ApiLoginLogin;
       'api::signup.signup': ApiSignupSignup;
       'api::test.test': ApiTestTest;
       'api::yaron.yaron': ApiYaronYaron;
